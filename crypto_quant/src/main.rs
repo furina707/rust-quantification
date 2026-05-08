@@ -11,9 +11,9 @@ use std::sync::Arc;
 
 use crate::backtest::{BacktestEngine, BacktestConfig};
 use crate::config::AppConfig;
-use crate::data::{Exchange, MockExchange};
+use crate::data::MockExchange;
 use crate::risk::RiskManager;
-use crate::strategy::{DualMaStrategy, Strategy};
+use crate::strategy::DualMaStrategy;
 
 #[tokio::main]
 async fn main() -> Result<()> {
@@ -34,6 +34,7 @@ async fn main() -> Result<()> {
     );
     
     let backtest_config = BacktestConfig {
+        window_size: 50,
         symbol: config.symbol.clone(),
         timeframe: config.timeframe.clone(),
         start_time: config.start_time,

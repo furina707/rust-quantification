@@ -37,9 +37,8 @@ impl Strategy for RsiStrategy {
         }
 
         let closes: Vec<f64> = klines.iter().map(|k| k.close).collect();
-        let indicators = TechnicalIndicators;
 
-        let rsi_values = indicators.rsi(&closes, self.period);
+        let rsi_values = TechnicalIndicators::rsi(&closes, self.period);
 
         let current_idx = closes.len() - 1;
         let prev_idx = closes.len() - 2;

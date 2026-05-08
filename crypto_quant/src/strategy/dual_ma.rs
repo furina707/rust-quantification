@@ -35,10 +35,9 @@ impl Strategy for DualMaStrategy {
         }
 
         let closes: Vec<f64> = klines.iter().map(|k| k.close).collect();
-        let indicators = TechnicalIndicators;
 
-        let fast_ma = indicators.sma(&closes, self.fast_period);
-        let slow_ma = indicators.sma(&closes, self.slow_period);
+        let fast_ma = TechnicalIndicators::sma(&closes, self.fast_period);
+        let slow_ma = TechnicalIndicators::sma(&closes, self.slow_period);
 
         let current_idx = closes.len() - 1;
         let prev_idx = closes.len() - 2;
